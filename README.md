@@ -24,7 +24,7 @@ docker build -t ghcr.io/goat-hill/ti-sdk-docker:latest .
 
 ```sh
 make ARCH=arm O=/home/tisdk/uboot-build/r5 j722s_evm_r5_defconfig
-make ARCH=arm O=/home/tisdk/uboot-build/r5 \
+make -j$(nproc) ARCH=arm O=/home/tisdk/uboot-build/r5 \
     CROSS_COMPILE="$CROSS_COMPILE_32" \
     BINMAN_INDIRS=${PREBUILT_IMAGES}
 ```
@@ -33,7 +33,7 @@ make ARCH=arm O=/home/tisdk/uboot-build/r5 \
 
 ```sh
 make ARCH=arm O=/home/tisdk/uboot-build/a53 j722s_evm_a53_defconfig
-make ARCH=arm O=/home/tisdk/uboot-build/a53 \
+make -j$(nproc) ARCH=arm O=/home/tisdk/uboot-build/a53 \
     CROSS_COMPILE="$CROSS_COMPILE_64" \
     CC="$CC_64" \
     BL31=${PREBUILT_IMAGES}/bl31.bin \
