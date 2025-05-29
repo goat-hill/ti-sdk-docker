@@ -29,6 +29,12 @@ make -j$(nproc) ARCH=arm O=/home/tisdk/uboot-build/r5 \
     BINMAN_INDIRS=${PREBUILT_IMAGES}
 ```
 
+Copy output to shared volume:
+
+```sh
+cp /home/tisdk/uboot-build/r5/tiboot3-j722s-hs-fs-evm.bin /home/tisdk/shared/ti-uboot-build/tiboot3.bin
+```
+
 ### a53
 
 ```sh
@@ -39,4 +45,11 @@ make -j$(nproc) ARCH=arm O=/home/tisdk/uboot-build/a53 \
     BL31=${PREBUILT_IMAGES}/bl31.bin \
     TEE=${PREBUILT_IMAGES}/bl32.bin \
     BINMAN_INDIRS=${PREBUILT_IMAGES}
+```
+
+Copy output to shared volume:
+
+```sh
+cp /home/tisdk/uboot-build/a53/tispl.bin /home/tisdk/shared/ti-uboot-build/
+cp /home/tisdk/uboot-build/a53/u-boot.img /home/tisdk/shared/ti-uboot-build/
 ```
