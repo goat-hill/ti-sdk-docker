@@ -9,3 +9,11 @@ docker run -it \
     -v /Volumes/LinuxCS/code:/home/tisdk/shared \
     ghcr.io/goat-hill/ti-sdk-docker:latest /bin/bash
 ```
+
+## Building image
+
+In same directory as `Dockerfile`:
+
+```sh
+docker build -t ghcr.io/goat-hill/ti-sdk-docker:latest .
+```
