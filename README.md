@@ -22,8 +22,21 @@ docker build -t ghcr.io/goat-hill/ti-sdk-docker:latest .
 
 ### r5
 
+EVM configure:
+
 ```sh
 make ARCH=arm O=/home/tisdk/uboot-build/r5 j722s_evm_r5_defconfig
+```
+
+BeagleY-AI configure:
+
+```sh
+make ARCH=arm O=/home/tisdk/uboot-build/r5 beagleyai_r5_defconfig
+```
+
+Compile:
+
+```sh
 make -j$(nproc) ARCH=arm O=/home/tisdk/uboot-build/r5 \
     CROSS_COMPILE="$CROSS_COMPILE_32" \
     BINMAN_INDIRS=${PREBUILT_IMAGES}
@@ -37,8 +50,21 @@ cp /home/tisdk/uboot-build/r5/tiboot3-j722s-hs-fs-evm.bin /home/tisdk/shared/ti-
 
 ### a53
 
+EVM configure:
+
 ```sh
 make ARCH=arm O=/home/tisdk/uboot-build/a53 j722s_evm_a53_defconfig
+```
+
+BeagleY-AI configure:
+
+```
+make ARCH=arm O=/home/tisdk/uboot-build/a53 beagleyai_a53_defconfig
+```
+
+Compile:
+
+```sh
 make -j$(nproc) ARCH=arm O=/home/tisdk/uboot-build/a53 \
     CROSS_COMPILE="$CROSS_COMPILE_64" \
     CC="$CC_64" \
