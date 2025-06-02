@@ -48,6 +48,21 @@ Copy output to shared volume:
 cp /home/tisdk/uboot-build/r5/tiboot3-j722s-hs-fs-evm.bin /home/tisdk/shared/ti-uboot-build/tiboot3.bin
 ```
 
+#### Other tasks
+
+Clean:
+
+```sh
+make ARCH=arm O=/home/tisdk/uboot-build/r5 mrproper
+```
+
+Simplify defconfig:
+
+```sh
+make ARCH=arm O=/home/tisdk/uboot-build/r5 savedefconfig
+cp /home/tisdk/uboot-build/r5/defconfig configs/beagleyai_r5_defconfig
+```
+
 ### a53
 
 EVM configure:
@@ -78,4 +93,19 @@ Copy output to shared volume:
 ```sh
 cp /home/tisdk/uboot-build/a53/tispl.bin /home/tisdk/shared/ti-uboot-build/
 cp /home/tisdk/uboot-build/a53/u-boot.img /home/tisdk/shared/ti-uboot-build/
+```
+
+#### Other tasks
+
+Clean:
+
+```sh
+make ARCH=arm O=/home/tisdk/uboot-build/a53 mrproper
+```
+
+Simplify defconfig:
+
+```sh
+make ARCH=arm O=/home/tisdk/uboot-build/a53 savedefconfig
+cp /home/tisdk/uboot-build/a53/defconfig configs/beagleyai_a53_defconfig
 ```
