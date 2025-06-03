@@ -18,6 +18,13 @@ In same directory as `Dockerfile`:
 docker build -t ghcr.io/goat-hill/ti-sdk-docker:latest .
 ```
 
+Push to Github, using classic Github token:
+
+```sh
+docker login ghcr.io -u your-github-user
+docker push ghcr.io/goat-hill/ti-sdk-docker:latest
+```
+
 ## Building U-Boot
 
 ### r5
