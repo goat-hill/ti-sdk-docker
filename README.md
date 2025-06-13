@@ -116,3 +116,11 @@ Simplify defconfig:
 make ARCH=arm O=/home/tisdk/uboot-build/a53 savedefconfig
 cp /home/tisdk/uboot-build/a53/defconfig configs/beagleyai_a53_defconfig
 ```
+
+## Building Linux kernel
+
+### Device tree DTBs
+
+```sh
+make -j$(nproc) ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" dtbs
+```
