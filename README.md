@@ -124,3 +124,24 @@ cp /home/tisdk/uboot-build/a53/defconfig configs/beagleyai_a53_defconfig
 ```sh
 make -j$(nproc) ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" dtbs
 ```
+
+## Installing U-Boot
+
+Follow [SDK instructions here](https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-am67a/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#build-u-boot)
+
+## Installing kernel
+
+Instructions based on [SDK docs here](https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-am67a/latest/exports/docs/linux/Foundational_Components_Kernel_Users_Guide.html#installing-the-kernel)
+
+```sh
+sudo cp arch/arm64/boot/Image /media/brady/rootfs/boot/
+sudo cp arch/arm64/boot/dts/ti/k3-am67a-beagleyai.dtb /media/brady/rootfs/boot/dtb/
+sudo cp arch/arm64/boot/dts/ti/k3-am67a-beagley-ai-edgeai-apps.dtbo /media/brady/rootfs/boot/dtb/ti/
+sudo cp arch/arm64/boot/dts/ti/k3-am67a-beagley-ai-csi0-imx219.dtbo /media/brady/rootfs/boot/dtb/ti/
+sudo make ARCH=arm64 INSTALL_MOD_PATH=/media/brady/rootfs/ modules_install
+```
+
+Make sure `boot` partition `uEnv.txt` indicates the overlays:
+```
+name_overlays=ti/k3-am67a-beagley-ai-edgeai-apps.dtbo ti/k3-am67a-beagley-ai-csi0-imx219.dtbo
+```
