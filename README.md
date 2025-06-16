@@ -145,3 +145,8 @@ Make sure `boot` partition `uEnv.txt` indicates the overlays:
 ```
 name_overlays=ti/k3-am67a-beagley-ai-edgeai-apps.dtbo ti/k3-am67a-beagley-ai-csi0-imx219.dtbo
 ```
+
+## Issues
+
+- Need to add `libncurses-dev` apt package for menuconfig
+- TI Ubuntu Docker build is [broken](https://github.com/TexasInstruments/ti-docker-images/pull/14#issuecomment-2970968176) (there was a gnutls package missing as a result)
