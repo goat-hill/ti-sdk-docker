@@ -119,6 +119,15 @@ cp /home/tisdk/uboot-build/a53/defconfig configs/beagleyai_a53_defconfig
 
 ## Building Linux kernel
 
+### Image and modules
+
+Must be on same git commit for `Image` + `modules` + `module_install` with no local changes to avoid `-dirty` flagging.
+
+```sh
+make -j$(nproc) ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" Image
+make -j$(nproc) ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" modules
+```
+
 ### Device tree DTBs
 
 ```sh
