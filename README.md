@@ -165,7 +165,7 @@ I'm mostly following AM67A [firmware builder guide](https://software-dl.ti.com/j
 To setup firmware builder run the following below. Exclude `--firmware-only` flag as we need Linux changes. Execute this in the root directory of PSDK RTOS.
 
 ```sh
-./sdk_builder/scripts/setup_psdk_rtos.sh`
+./sdk_builder/scripts/setup_psdk_rtos.sh
 ```
 
 Then:
