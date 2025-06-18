@@ -155,6 +155,19 @@ Make sure `boot` partition `uEnv.txt` indicates the overlays:
 name_overlays=ti/k3-am67a-beagley-ai-edgeai-apps.dtbo ti/k3-am67a-beagley-ai-csi0-imx219.dtbo
 ```
 
+## Building vision_apps WIP
+
+Mostly following AM67A [firmware builder guide](https://software-dl.ti.com/jacinto7/esd/processor-sdk-rtos-j722s/11_00_00_06/exports/docs/psdk_rtos/docs/user_guide/firmware_builder.html)
+
+- To setup firmware builder run `./sdk_builder/scripts/setup_psdk_rtos.sh`. Exclude `--firmware-only` flag as we need Linux changes.
+
+Then:
+
+```sh
+cd sdk_builder/
+TISDK_IMAGE=edgeai ./make_firmware.sh
+```
+
 ## Issues
 
 - Need to add `libncurses-dev` apt package for menuconfig
