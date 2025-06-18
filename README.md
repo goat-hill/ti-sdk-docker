@@ -160,12 +160,13 @@ name_overlays=ti/k3-am67a-beagley-ai-edgeai-apps.dtbo ti/k3-am67a-beagley-ai-csi
 Install PROCESSOR-SDK-J722S on TI Ubuntu docker image. Download SDK here:
 https://www.ti.com/tool/PROCESSOR-SDK-J722S
 
-Mostly following AM67A [firmware builder guide](https://software-dl.ti.com/jacinto7/esd/processor-sdk-rtos-j722s/11_00_00_06/exports/docs/psdk_rtos/docs/user_guide/firmware_builder.html)
+I'm mostly following AM67A [firmware builder guide](https://software-dl.ti.com/jacinto7/esd/processor-sdk-rtos-j722s/11_00_00_06/exports/docs/psdk_rtos/docs/user_guide/firmware_builder.html)
 
 To setup firmware builder run the following below. Exclude `--firmware-only` flag as we need Linux changes. Execute this in the root directory of PSDK RTOS.
 
 ```sh
 ./sdk_builder/scripts/setup_psdk_rtos.sh`
+```
 
 Then:
 
