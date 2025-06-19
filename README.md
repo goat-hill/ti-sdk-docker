@@ -187,6 +187,33 @@ cd sdk_builder/
 TISDK_IMAGE=edgeai ./make_firmware.sh
 ```
 
+### Installing vision_apps
+
+```sh
+export LINUX_FS_PATH=/media/brady/rootfs
+export LINUX_FS_STAGE_PATH=/home/brady/host-shared/code/targetfs
+
+# remove old remote files from filesystem
+sudo rm -f $LINUX_FS_PATH/usr/lib/firmware/j722s-*-fw
+sudo rm -f $LINUX_FS_PATH/usr/lib/firmware/j722s-*-fw-sec
+sudo rm -rf $LINUX_FS_PATH/usr/lib/firmware/vision_apps_eaik
+sudo rm -rf $LINUX_FS_PATH/opt/tidl_test/*
+sudo rm -rf $LINUX_FS_PATH/opt/notebooks/*
+sudo rm -rf $LINUX_FS_PATH/usr/include/processor_sdk/*
+
+# create new directories
+sudo mkdir -p $LINUX_FS_PATH/usr/include/processor_sdk
+
+# copy full vision apps linux fs stage directory into linux fs
+sudo cp -r $LINUX_FS_STAGE_PATH/* $LINUX_FS_PATH/.
+
+# Brady addition
+sudo cp -r $LINUX_FS_STAGE_PATH/usr/lib/firmware/ $LINUX_FS_PATH/lib/firmware/
+
+# Rename misnamed codec
+sudo mv /lib/firmware/cnm/wave521c_codec_fw.bin /lib/firmware/cnm/wave521c_k3_codec_fw.bin
+```
+
 ## Issues
 
 - Need to add `libncurses-dev` apt package for menuconfig
