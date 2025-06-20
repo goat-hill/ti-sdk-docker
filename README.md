@@ -161,7 +161,7 @@ name_overlays=ti/k3-am67a-beagley-ai-edgeai-apps.dtbo ti/k3-am67a-beagley-ai-csi
 
 ## Building vision_apps WIP
 
-Install PROCESSOR-SDK-J722S on TI Ubuntu docker image. Download SDK here:
+Install `PROCESSOR-SDK-RTOS-J722S` on TI Ubuntu docker image. Download SDK here:
 https://www.ti.com/tool/PROCESSOR-SDK-J722S
 
 I'm mostly following AM67A [firmware builder guide](https://software-dl.ti.com/jacinto7/esd/processor-sdk-rtos-j722s/11_00_00_06/exports/docs/psdk_rtos/docs/user_guide/firmware_builder.html)
