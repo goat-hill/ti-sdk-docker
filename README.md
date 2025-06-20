@@ -203,7 +203,7 @@ cp -r /tmp/tivision_apps_targetfs_stage /home/tisdk/shared/tivision_apps_targetf
 
 ```sh
 export LINUX_FS_PATH=/media/brady/rootfs
-export LINUX_FS_STAGE_PATH=/home/brady/host-shared/code/targetfs
+export LINUX_FS_STAGE_PATH=/home/brady/host-shared/code/tivision_apps_targetfs_stage
 
 # remove old remote files from filesystem
 sudo rm -f $LINUX_FS_PATH/usr/lib/firmware/j722s-*-fw
