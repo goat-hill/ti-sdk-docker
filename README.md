@@ -221,9 +221,6 @@ sudo cp -r $LINUX_FS_STAGE_PATH/* $LINUX_FS_PATH/.
 
 # Brady addition
 sudo cp -r $LINUX_FS_STAGE_PATH/usr/lib/firmware/ $LINUX_FS_PATH/lib/firmware/
-
-# Rename misnamed codec
-sudo mv /lib/firmware/cnm/wave521c_codec_fw.bin /lib/firmware/cnm/wave521c_k3_codec_fw.bin
 ```
 
 ## Building Edge AI
