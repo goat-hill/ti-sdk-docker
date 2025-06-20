@@ -216,6 +216,59 @@ sudo cp -r $LINUX_FS_STAGE_PATH/usr/lib/firmware/ $LINUX_FS_PATH/lib/firmware/
 sudo mv /lib/firmware/cnm/wave521c_codec_fw.bin /lib/firmware/cnm/wave521c_k3_codec_fw.bin
 ```
 
+## Building Edge AI
+
+### Obtaining Edge AI image rootfs .tar.gz
+
+Download same [TI SDK Edge AI](https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-AM67A/11.00.00.08) .wic.gz used for flashing SD card.
+Now we want to get the rootfs of the .wic available in the same directory. A bit tricky becuase it's a .wic image and not .tar.gz like TI SDK adas edition.
+
+Steps if in a docker image:
+```sh
+sudo losetup -P $(losetup -f) ~/host-shared/code/tisdk-edgeai-image-j722s-evm.wic 
+losetup -a
+sudo mount /dev/loop13p2 /mnt/rootfs-edgeai
+sudo tar -czpf targetfs.tar.gz -C /mnt/rootfs-edgeai/ .
+```
+
+Hold on to this .tar.gz. Now cleanup the mess:
+
+```sh
+sudo umount /mnt/rootfs-edgeai 
+sudo losetup -d /dev/loop13
+```
+
+### Creating build environment
+
+On TI Ubuntu docker image with Edge AI SDK installed:
+
+```sh
+git clone https://github.com/TexasInstruments/edgeai-app-stack
+git submodule init
+git submodule update
+```
+
+Extract EdgeAI rootfs to `targetfs/` local directory.
+
+```sh
+tar -zxf targetfs.tar.gz -C targetfs
+```
+
+### Compilation
+Note: Required modifications to Makefile (point to local compile toolchain, targetfs/, and new targetfs-install/ dir)
+
+Now compile:
+```sh
+ARCH=arm64 make -j$(nproc)
+```
+I had to compile it a few times...
+
+### Copy to SD card
+
+```sh
+sudo cp -r targetfs-install/ /media/brady/rootfs/
+```
+
 ## Issues
 
 - Need to add `libncurses-dev` apt package for menuconfig
