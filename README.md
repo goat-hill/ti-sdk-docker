@@ -193,6 +193,12 @@ cd sdk_builder/
 TISDK_IMAGE=edgeai ./make_firmware.sh
 ```
 
+### Gather build outputs
+
+```sh
+cp -r /tmp/tivision_apps_targetfs_stage /home/tisdk/shared/tivision_apps_targetfs_stage
+```
+
 ### Installing vision_apps
 
 ```sh
