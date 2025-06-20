@@ -136,7 +136,11 @@ make -j$(nproc) ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" dtbs
 
 ## Installing U-Boot
 
-Follow [SDK instructions here](https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-am67a/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#build-u-boot)
+Based on [SDK instructions here](https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-am67a/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#build-u-boot)
+
+```sh
+sudo cp tiboot3.bin tispl.bin u-boot.img /media/brady/BOOT
+```
 
 ## Installing kernel
 
