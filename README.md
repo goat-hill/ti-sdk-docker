@@ -273,7 +273,7 @@ I had to compile it a few times...
 ### Copy to SD card
 
 ```sh
-sudo cp -r targetfs-install/ /media/brady/rootfs/
+sudo cp -r targetfs-install/* /media/brady/rootfs/
 ```
 
 ## Issues
