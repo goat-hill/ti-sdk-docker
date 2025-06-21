@@ -218,9 +218,6 @@ sudo mkdir -p $LINUX_FS_PATH/usr/include/processor_sdk
 
 # copy full vision apps linux fs stage directory into linux fs
 sudo cp -r $LINUX_FS_STAGE_PATH/* $LINUX_FS_PATH/.
-
-# Brady addition
-sudo cp -r $LINUX_FS_STAGE_PATH/usr/lib/firmware/ $LINUX_FS_PATH/lib/firmware/
 ```
 
 ## Building Edge AI
