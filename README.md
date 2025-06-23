@@ -2,7 +2,9 @@
 
 [PROCESSOR-SDK-AM67A](https://www.ti.com/tool/PROCESSOR-SDK-AM67A) running on [TI Ubuntu](https://github.com/TexasInstruments/ti-docker-images)
 
-## Running the image
+## Docker setup
+
+### Running the image
 
 ```sh
 docker run -it \
@@ -10,7 +12,7 @@ docker run -it \
     ghcr.io/goat-hill/ti-sdk-docker:latest /bin/bash
 ```
 
-## Building image
+### Building image
 
 In same directory as `Dockerfile`:
 
@@ -33,9 +35,11 @@ I have the TI Edge AI SDK [11.00.00.08](https://www.ti.com/tool/download/PROCESS
 - [Linux kernel - branch `ti-linux-6.12.y-bb`](https://github.com/goat-hill/linux/tree/ti-linux-6.12.y-bb)
 - [TI vision_apps - branch `11.00.00.06-beagley`](https://github.com/goat-hill/ti-vision-apps/tree/11.00.00.06-beagley)
 
-## Building U-Boot
+## U-Boot development workflow
 
-### r5
+### Building U-Boot
+
+#### r5
 
 EVM configure:
 
@@ -63,7 +67,7 @@ Copy output to shared volume:
 cp /home/tisdk/uboot-build/r5/tiboot3-j722s-hs-fs-evm.bin /home/tisdk/shared/ti-uboot-build/tiboot3.bin
 ```
 
-#### Other tasks
+##### Other tasks
 
 Clean:
 
@@ -78,7 +82,7 @@ make ARCH=arm O=/home/tisdk/uboot-build/r5 savedefconfig
 cp /home/tisdk/uboot-build/r5/defconfig configs/beagleyai_r5_defconfig
 ```
 
-### a53
+#### a53
 
 EVM configure:
 
@@ -110,7 +114,7 @@ cp /home/tisdk/uboot-build/a53/tispl.bin /home/tisdk/shared/ti-uboot-build/
 cp /home/tisdk/uboot-build/a53/u-boot.img /home/tisdk/shared/ti-uboot-build/
 ```
 
-#### Other tasks
+##### Other tasks
 
 Clean:
 
@@ -125,9 +129,19 @@ make ARCH=arm O=/home/tisdk/uboot-build/a53 savedefconfig
 cp /home/tisdk/uboot-build/a53/defconfig configs/beagleyai_a53_defconfig
 ```
 
-## Building Linux kernel
+### Installing U-Boot
 
-### Image and modules
+Based on [SDK instructions here](https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-am67a/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#build-u-boot)
+
+```sh
+sudo cp tiboot3.bin tispl.bin u-boot.img /media/brady/BOOT
+```
+
+## Linux kernel development workflow
+
+### Building Linux kernel
+
+#### Image and modules
 
 Must be on same git commit for `Image` + `modules` + `module_install` with no local changes to avoid `-dirty` flagging.
 
@@ -136,21 +150,13 @@ make -j$(nproc) ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" Image
 make -j$(nproc) ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" modules
 ```
 
-### Device tree DTBs
+#### Device tree DTBs
 
 ```sh
 make -j$(nproc) ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" dtbs
 ```
 
-## Installing U-Boot
-
-Based on [SDK instructions here](https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-am67a/latest/exports/docs/linux/Foundational_Components/U-Boot/UG-General-Info.html#build-u-boot)
-
-```sh
-sudo cp tiboot3.bin tispl.bin u-boot.img /media/brady/BOOT
-```
-
-## Installing kernel
+### Installing kernel
 
 Instructions based on [SDK docs here](https://software-dl.ti.com/jacinto7/esd/processor-sdk-linux-am67a/latest/exports/docs/linux/Foundational_Components_Kernel_Users_Guide.html#installing-the-kernel)
 
@@ -167,7 +173,7 @@ Make sure `boot` partition `uEnv.txt` indicates the overlays:
 name_overlays=ti/k3-am67a-beagley-ai-edgeai-apps.dtbo ti/k3-am67a-beagley-ai-csi0-imx219.dtbo
 ```
 
-## Building vision_apps WIP
+## TI vision_apps development workflow
 
 Install `PROCESSOR-SDK-RTOS-J722S` on TI Ubuntu docker image. Download SDK here:
 https://www.ti.com/tool/PROCESSOR-SDK-J722S
@@ -227,7 +233,7 @@ sudo mkdir -p $LINUX_FS_PATH/usr/include/processor_sdk
 sudo cp -r $LINUX_FS_STAGE_PATH/* $LINUX_FS_PATH/.
 ```
 
-## Building Edge AI
+## Edge AI development workflow
 
 ### Obtaining Edge AI image rootfs .tar.gz
 
