@@ -180,16 +180,15 @@ To setup firmware builder run the following below. Exclude `--firmware-only` fla
 ./sdk_builder/scripts/setup_psdk_rtos.sh
 ```
 
-### Update memory map
+### Swap to modified BeagleY-AI modified vision_apps
 
-Memory map needs to be modified for BeagleY-AI with 4 GB DDR vs 8 GB EVM.
-
-Follow instructions [here](https://software-dl.ti.com/jacinto7/esd/processor-sdk-rtos-j722s/latest/exports/docs/psdk_rtos/docs/user_guide/developer_notes_memory_map.html) but also update high DDR memory in this file:
+We need to use a modified verison of vision_apps to support memory map for BeagleY-AI with 4 GB DDR vs 8 GB EVM. Modifications are based on instructions [here](https://software-dl.ti.com/jacinto7/esd/processor-sdk-rtos-j722s/latest/exports/docs/psdk_rtos/docs/user_guide/developer_notes_memory_map.html)
 
 ```sh
-vision_apps/platform/j722s/rtos/c7x_2/example.syscfg
-vision_apps/platform/j722s/rtos/c7x_1/example.syscfg
-vision_apps/platform/j722s/rtos/mcu2_0/example_no_board_deps.syscfg
+mv vision_apps/ vision_apps_bak/
+git clone https://github.com/goat-hill/ti-vision-apps.git vision_apps
+cd vision_apps/
+git checkout 11.00.00.06-beagley
 ```
 
 ### Compilation
