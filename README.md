@@ -295,6 +295,26 @@ I had to compile it a few times...
 sudo cp -r targetfs-install/* /media/brady/rootfs/
 ```
 
+## Testing TI Edge AI SDK
+
+Kill the default app started at launch
+
+```sh
+killall edgeai-gui-app
+```
+
+Pipe OpenVX logs to shell:
+```sh
+source /opt/vision_apps/vision_apps_init.sh
+```
+
+Run IMX219 demo:
+
+```sh
+cd /opt/edgeai-gst-apps/apps_cpp/
+./bin/Release/app_edgeai ../configs/imx219_cam_example.yaml
+```
+
 ## Issues
 
 - Need to add `libncurses-dev` apt package for menuconfig
