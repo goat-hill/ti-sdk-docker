@@ -25,6 +25,14 @@ docker login ghcr.io -u your-github-user
 docker push ghcr.io/goat-hill/ti-sdk-docker:latest
 ```
 
+## Running TI Edge AI SDK on BeagleY-AI
+
+I have the TI Edge AI SDK [11.00.00.08](https://www.ti.com/tool/download/PROCESSOR-SDK-LINUX-AM67A/11.00.00.08) running on BeagleY-AI with a few modifications.
+
+- [UBoot - branch ti-u-boot-2024.04-bb](https://github.com/goat-hill/ti-u-boot/tree/ti-u-boot-2024.04-bb)
+- [Linux kernel - branch ti-linux-6.12.y-bb](https://github.com/goat-hill/linux/tree/ti-linux-6.12.y-bb)
+- [TI vision_apps - branch 11.00.00.06-beagley](https://github.com/goat-hill/ti-vision-apps/tree/11.00.00.06-beagley)
+
 ## Building U-Boot
 
 ### r5
