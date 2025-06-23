@@ -145,6 +145,15 @@ sudo cp tiboot3.bin tispl.bin u-boot.img /media/brady/BOOT
 
 Must be on same git commit for `Image` + `modules` + `module_install` with no local changes to avoid `-dirty` flagging.
 
+Clean and configure make:
+
+```sh
+make -j$(nproc) ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" distclean
+make -j$(nproc) ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" defconfig ti_arm64_prune.config
+```
+
+Compile linux kernel image and modules:
+
 ```sh
 make -j$(nproc) ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" Image
 make -j$(nproc) ARCH=arm64 CROSS_COMPILE="$CROSS_COMPILE_64" modules
