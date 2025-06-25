@@ -17,7 +17,9 @@ docker run -it \
 In same directory as `Dockerfile`:
 
 ```sh
-docker build -t ghcr.io/goat-hill/ti-sdk-docker:latest .
+docker build \
+    -p linux/amd64 \
+    -t ghcr.io/goat-hill/ti-sdk-docker:latest .
 ```
 
 Push to Github, using classic Github token:
