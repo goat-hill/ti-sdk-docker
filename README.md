@@ -37,7 +37,7 @@ I have the TI Edge AI SDK [11.00.00.08](https://www.ti.com/tool/download/PROCESS
 - [Linux kernel - branch `ti-linux-6.12.y-bb`](https://github.com/goat-hill/linux/tree/ti-linux-6.12.y-bb)
 - [TI vision_apps - branch `11.00.00.06-beagley`](https://github.com/goat-hill/ti-vision-apps/tree/11.00.00.06-beagley)
 
-Download pre-built image [here](https://www.beagleboard.org/distros/beagley-ai-ti-sdk-edge-ai-11-00-00-08-2025-07-03)
+Download pre-built image [here](https://www.beagleboard.org/distros/beagley-ai-ti-sdk-edge-ai-11-00-00-08-2025-07-03). Built via [beagleboard/edge-ai-image-builder](https://openbeagle.org/beagleboard/edge-ai-image-builder).
 
 ## U-Boot development workflow
 
